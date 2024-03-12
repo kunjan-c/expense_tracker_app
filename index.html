@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoice_App</title>
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="main-container">
+        <div class="title roboto-bold">Expenss Tracker</div>
+        <div class="navbar">
+            <div class="radio-button-container">
+                <div class="radio-btn">
+                    <input type="radio" name="transaction-type" value="credit" id="credit-Btn" class="btn">
+                    <label for="Credit-Btn" class="btn-text">Credit</label>
+                </div>
+                <div class="radio-btn">
+
+                <input type="radio" name="transaction-type" id="debit-Btn" value="debit" class="btn">
+                <label for="Debit-Btn" class="btn-text">Debit</label>
+            </div>
+           
+        </div>
+        <div class="text-field-container">
+            <div class="msg-text-container">
+                <div class="msg-text">Message</div>
+                <input type="text" name="Message" id="msg" class="text">
+            </div>
+            <div class="amt-text-container">
+                <div class="amt-text">Amount</div>
+                <input type="number" name="Amount" id="amt" class="amt">
+            </div>
+
+        </div>
+    </div>
+    <div class="submitt-btn-container">
+        <button class="expense-add-btn" onclick="executeTransaction()">ADD</button>
+    </div>
+
+    <div class="content-container">
+        <table class="table expens-calculator-table" id="table">
+            <thead id="thead">
+                <tr>
+                    <th class="desc col-name">Description</th>
+                    <th class="cr col-name">Credit</th>
+                    <th class="dr col-name">Debit</th>
+                    <th class="at col-name">Balance</th>
+                </tr>
+            </thead>
+            <tbody class="">
+                <!-- <tr>
+                    <td class="desc">Buy Charger</td>
+                    <td class="cr" id="cr">--</td>
+                    <td class="dr">600Rs</td>
+                    <td class="at">500Rs</td>
+                </tr>
+                <tr>
+                    <td class="desc">Buy Charger</td>
+                    <td class="cr">--</td>
+                    <td class="dr">800Rs</td>
+                    <td class="at">500Rs</td>
+                </tr> -->
+            </tbody>
+        </table>
+
+    </div>
+
+
+    </div>
+    <script src="./script.js"></script>
+</body>
+
+</html>

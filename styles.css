@@ -1,0 +1,213 @@
+body {
+  font-family: "Roboto", sans-serif;
+  margin: 0;
+  padding: 10px;
+}
+
+.title {
+  font-size: 34px;
+  padding: 10px 0px 30px 0px;
+  color: #03565C;
+
+}
+
+.main-container {
+  width: 90%;
+  /* border: 2px solid grey; */
+  padding: 20px;
+  min-height: 80vh;
+  margin: auto;
+}
+
+.navbar {
+  /* border: 2px solid grey; */
+  display: flex;
+  flex-direction: row;
+  padding: 5px;
+  align-items: center;
+}
+
+.radio-button-container {
+  padding-top: 30px;
+  display: flex;
+  flex-direction: column;
+  margin-right: 50px;
+
+}
+
+
+.btn-text {
+  font-size: 16px;
+}
+
+.btn {
+  margin: 13px 5px;
+}
+
+.text-field-container {
+  display: flex;
+  flex-direction: row;
+  flex: 8;
+  padding: 5px;
+  text-align: center;
+}
+
+.msg-text-container,
+.amt-text-container {
+  flex: 3;
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+}
+
+.msg-text,
+.amt-text {
+  margin-bottom: 14px;
+  font-size: 16px;
+  font-weight: 400;
+  text-align: left;
+}
+
+.text,
+.amt {
+  padding: 20px 10px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+  border: none;
+  width: 80%;
+  height: 30px;
+}
+
+
+
+.submitt-btn-container {
+  text-align: end;
+  margin: 10px 0px;
+  font-size: 25px;
+
+}
+
+.content-container {
+  overflow-y: auto;
+  padding-top: 10px;
+  margin: 5px 10px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+  min-height: 70vh;
+}
+
+
+
+.desc {
+  border: 1px solid black;
+  width: 300px;
+}
+
+.cr,
+.dr,
+.at {
+  flex: 2;
+  border: 1px solid black;
+}
+
+input {
+  font-size: 16px;
+  text-align: left;
+  padding: 0px;
+}
+
+input[type=radio]#credit-Btn,
+input[type=radio]#debit-Btn {
+  accent-color: #03565C;
+}
+
+.radio-button-container input[type="radio"]:checked+label {
+  color: #03565C;
+}
+
+.expense-add-btn {
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: none;
+  background-color: white;
+  color: #03565C;
+  border: 2px solid #03565C;
+
+
+}
+
+.expens-calculator-table {
+  text-align: center;
+  padding: 0px 5px;
+  border-collapse: collapse;
+  width: 100%;
+  overflow: auto;
+}
+
+
+
+.expens-calculator-table  td {
+  padding: 10px;
+  font-weight: 400;
+  border: 1px solid #03565c14;
+
+}
+.expens-calculator-table th {
+  background-color: #03565C;
+  color: white;
+  padding: 12px;
+  font-weight: 400;
+  border: 1px solid #03565c14;
+
+}
+.roboto-regular {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.roboto-medium {
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.roboto-bold {
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.roboto-black {
+  font-family: "Roboto", sans-serif;
+  font-weight: 900;
+  font-style: normal;
+}
+
+.roboto-light {
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.roboto-thin {
+  font-family: "Roboto", sans-serif;
+  font-weight: 100;
+  font-style: normal;
+}
+
+
+ @media only screen and (max-width : 724px){
+  .navbar{
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+  .text-field-container{
+    flex-direction: column;
+    width: 100%;
+  }
+  .submitt-btn-container {
+    text-align: left;
+ 
+  
+  }
+ }
