@@ -7,8 +7,7 @@ body {
 .title {
   font-size: 34px;
   padding: 10px 0px 30px 0px;
-  color: #03565C;
-
+  color: #03565c;
 }
 
 .main-container {
@@ -17,6 +16,7 @@ body {
   padding: 20px;
   min-height: 80vh;
   margin: auto;
+  position: relative;
 }
 
 .navbar {
@@ -32,9 +32,7 @@ body {
   display: flex;
   flex-direction: column;
   margin-right: 50px;
-
 }
-
 
 .btn-text {
   font-size: 16px;
@@ -71,13 +69,12 @@ body {
 .text,
 .amt {
   padding: 20px 10px;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px,
+    rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
   border: none;
   width: 80%;
   height: 30px;
 }
-
-
 
 .submitt-btn-container {
   text-align: end;
@@ -90,11 +87,10 @@ body {
   overflow-y: auto;
   padding-top: 10px;
   margin: 5px 10px;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px,
+    rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
   min-height: 70vh;
 }
-
-
 
 .desc {
   border: 1px solid black;
@@ -114,13 +110,13 @@ input {
   padding: 0px;
 }
 
-input[type=radio]#credit-Btn,
-input[type=radio]#debit-Btn {
-  accent-color: #03565C;
+input[type="radio"]#credit-Btn,
+input[type="radio"]#debit-Btn {
+  accent-color: #03565c;
 }
 
 .radio-button-container input[type="radio"]:checked+label {
-  color: #03565C;
+  color: #03565c;
 }
 
 .expense-add-btn {
@@ -128,10 +124,8 @@ input[type=radio]#debit-Btn {
   border-radius: 10px;
   border: none;
   background-color: white;
-  color: #03565C;
-  border: 2px solid #03565C;
-
-
+  color: #03565c;
+  border: 2px solid #03565c;
 }
 
 .expens-calculator-table {
@@ -142,22 +136,20 @@ input[type=radio]#debit-Btn {
   overflow: auto;
 }
 
-
-
-.expens-calculator-table  td {
+.expens-calculator-table td {
   padding: 10px;
   font-weight: 400;
   border: 1px solid #03565c14;
-
 }
+
 .expens-calculator-table th {
-  background-color: #03565C;
+  background-color: #03565c;
   color: white;
   padding: 12px;
   font-weight: 400;
   border: 1px solid #03565c14;
-
 }
+
 .roboto-regular {
   font-family: "Roboto", sans-serif;
   font-weight: 400;
@@ -194,20 +186,205 @@ input[type=radio]#debit-Btn {
   font-style: normal;
 }
 
+.hide {
+  display: none;
+}
+.show{
+  display: flex;
+}
 
- @media only screen and (max-width : 724px){
-  .navbar{
+.no-expense-found {
+  text-align: center;
+  padding-top: 31px;
+  font-size: 18px;
+  font-weight: 300;
+}
+
+/* .card-container {
+  display: none;
+
+} */
+
+.add-icon-container {
+  display: none;
+}
+ .balance-card-container {
+  display: none;
+
+}
+.close-icon{
+  text-align: end;
+  font-size: 20px;
+}
+@media only screen and (max-width: 724px) {
+  .table {
+    display: none;
+  }
+
+  .main-container {
+    width: 100%;
+    padding: 4px;
+    border: none;
+    min-height: 100vh;
+    margin: auto;
+  }
+
+  .content-container {
+    overflow-y: auto;
+    padding-top: 10px;
+    margin: 5px 2px;
+    box-shadow: none;
+    height: 100%;
+  }
+
+  .title {
+    padding-bottom: 10px;
+  }
+
+  .navbar {
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
   }
-  .text-field-container{
+
+  .text-field-container {
     flex-direction: column;
     width: 100%;
   }
+
   .submitt-btn-container {
     text-align: left;
- 
+    margin-left: 10px;
+  }
+
+  .add-transaction-container-mobile {
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    padding: 5px;
+    margin: 5px;
   
   }
- }
+
+  .table {
+    display: none;
+  }
+
+  .card {
+    min-height: 80px;
+    width: 95%;
+    margin: 10px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+
+  }
+
+  .card-content-container {
+    display: flex;
+    flex-direction: row;
+    padding: 16px;
+    padding: 16px 8px 16px 8px;
+    justify-content: space-between;
+    align-items: center;
+    
+  }
+
+  .card-profile {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: lightgray;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+  }
+
+  .card-title {
+    padding-left: 10px;
+    font-size: 14px;
+    font-weight: normal;
+    padding: 0px 14px;
+    width: 50%;
+  }
+
+  .card-amount {
+    padding-right: 10px;
+    font-size: 14px;
+    font-weight: normal;
+  }
+
+  .add-icon-container {
+    width: 60px;
+    height: 60px;
+    background-color: #03565c;
+    border-radius: 50%;
+    position: fixed;
+    right: 0;
+    transform: translate(-50%, -50%);
+    top: 88vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+
+  }
+
+  .add-icon {
+    color: white;
+    width: 30px;
+    height: 30px;
+  }
+
+  .green-text-color {
+    color: green;
+  }
+
+  .red-text-color {
+    color: red;
+  }
+
+  .balance-card-container {
+    width: 95%;
+    display: flex;
+    flex-direction: column;
+   
+    margin: auto;
+    padding: 30px 10px;
+    height: 120px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
+    border-radius: 10px;
+    color: white;
+    background: #44A08D;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #093637, #44A08D);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #093637, #44A08D); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    
+
+  }
+
+  .balance-card {
+    padding: 10px 20px 10px 20px;
+    font-size: 16px;
+    font-weight: 500;
+  }
+
+  .amount-card {
+    padding: 0px 20px 0px 20px;
+    font-size: 26px;
+  }
+  .text-field-container {
+
+    padding: 0px;
+
+  }
+  .msg-text-container,
+.amt-text-container {
+  margin: 10px 4px 10px 4px;
+}
+.radio-button-container {
+  flex-direction: row;
+  width: 50%;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+}

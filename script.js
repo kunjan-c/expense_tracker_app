@@ -5,33 +5,95 @@ var debitRadioButton = document.getElementById("debit-Btn");
 var messageTextField = document.getElementById("msg");
 var amtTextField = document.getElementById("amt");
 var tableElement = document.getElementById("table");
-var tableContainer = document.getElementById("table-container");
+var expenseNotFoundEl = document.getElementById("no-expense-found");
+var cardsContainer = document.getElementById("card-container");
+var cardBalanceForSmallDevice = document.getElementById("amount-card");
+var plusBtn = document.getElementById("plus-icon-container");
+var addExpenseForm = document.getElementById("add-transaction-container-mobile");
+var closeIconEl = document.getElementById("close-icon");
 let transactions = []
+
 
 // Function to load transactions array from local storage only once
 let transactionsLoaded = false;
 
+let isSmallScreen = window.innerWidth > 742 ? false : true;
+//when close btn clicked in responsive form
+onCloseBtnhandler()
+
+// Call loadTransactionsFromLocalStorageOnce() when your script starts
+loadTransactionsFromLocalStorageOnce();
+
+//this will handle plus btn operation
+plusIconHandler()
+
+if (!isSmallScreen) {
+    addExpenseForm.classList.remove("hide");
+    closeIconEl.classList.add('hide')
+}
+
+function closeAddForm() {
+    addExpenseForm.classList.add("hide")
+    cardsContainer.classList.remove("hide")
+}
+function onCloseBtnhandler() {
+    closeIconEl.addEventListener('click', () => {
+        closeAddForm()
+    })
+
+}
 
 // Function to load transactions array from local storage
 function loadTransactionsFromLocalStorageOnce() {
     if (!transactionsLoaded) {
         const transactionsData = localStorage.getItem('transactions');
+
         if (transactionsData) {
             transactions = JSON.parse(transactionsData);
 
-            balance = transactions[transactions.length - 1].balance
-            createTableRows()
+            if (transactions.length > 0) {
+                balance = transactions[transactions.length - 1].balance
+                isSmallScreen ? createTransactionCard() : createTableRows()
+
+
+            }
+
         }
 
         transactionsLoaded = true;
+        if (transactions.length > 0) {
+
+            showTable()
+        } else {
+            hideTable()
+            if (isSmallScreen) {
+                updateBalaceInCard()
+            }
+        }
+
     }
+
+
 }
 
-// Call loadTransactionsFromLocalStorageOnce() when your script starts
-loadTransactionsFromLocalStorageOnce();
+function showTable() {
+    expenseNotFoundEl.classList.add('hide')
+    tableElement.classList.remove('hide')
+    // expenseNotFoundEl.style.display = block;
+
+}
+
+function hideTable() {
+
+    expenseNotFoundEl.classList.remove('hide')
+    tableElement.classList.add('hide')
+    // expenseNotFoundEl.style.display = block;
+
+
+}
+
 
 function executeTransaction() {
-
 
     if (!amtTextField.value) {
         alert("Please enter an amount value");
@@ -52,11 +114,18 @@ function executeTransaction() {
     } else {
         alert("please select debit or credit");
     }
+    if (isSmallScreen) {
+        addExpenseForm.classList.add("hide")
+        cardsContainer.classList.remove("hide")
+    }
 }
 
 
 function performCreditOp() {
+    expenseNotFoundEl.classList.add('hide')
+    tableElement.classList.remove('hide')
     balance = balance + Number(amtTextField.value);
+
     updateTransactions("credit");
 }
 
@@ -70,11 +139,15 @@ function performDebitOp() {
         alert("no sufficient funds");
         return;
     }
+
     balance = balance - Number(amtTextField.value);
+    expenseNotFoundEl.classList.add('hide')
+    tableElement.classList.remove('hide')
     updateTransactions("debit");
 }
 
 const updateTransactions = (transactionType) => {
+
     while (tableElement.rows.length > 1) {
         tableElement.deleteRow(1);
     }
@@ -89,9 +162,71 @@ const updateTransactions = (transactionType) => {
         balance: balance
     })
 
+    if (isSmallScreen) {
+        createTransactionCard()
+    } else {
+        createTableRows()
+    }
 
-    createTableRows()
 };
+
+function clearInputs() {
+    messageTextField.value = "";
+    amtTextField.value = ""
+}
+
+function createTransactionCard() {
+
+    transactions.map((data) => {
+        var newCardElement = document.createElement("div");
+        newCardElement.classList.add("card")
+
+        var cardContentContainer = document.createElement("div");
+        cardContentContainer.classList.add("card-content-container")
+
+        var cardProfile = document.createElement("div");
+        cardProfile.classList.add("card-profile")
+        cardProfile.innerText = data.transactionType == "credit" ? "CR" : "DR";
+        cardContentContainer.appendChild(cardProfile)
+
+        var cardTitle = document.createElement("div");
+        cardTitle.classList.add("card-title");
+        cardTitle.innerText = data.description
+        cardContentContainer.appendChild(cardTitle)
+
+        var cardAmount = document.createElement("div");
+        cardAmount.classList.add("card-amount");
+        cardAmount.innerText = data.transactionType == "credit" ? "+ " + data.amount : "- " + data.amount;
+        let colorClass = data.transactionType == "credit" ? "green-text-color" : "red-text-color";
+        cardAmount.classList.add(colorClass)
+        cardContentContainer.appendChild(cardAmount)
+
+        newCardElement.appendChild(cardContentContainer)
+
+        cardsContainer.append(newCardElement)
+
+
+
+    })
+    clearInputs()
+    updateBalaceInCard()
+
+
+}
+
+function updateBalaceInCard() {
+    cardBalanceForSmallDevice.innerText = (balance > 0 ? balance : 0)
+}
+
+function plusIconHandler() {
+    plusBtn.addEventListener("click", (e) => {
+        console.log(e);
+        addExpenseForm.classList.remove("hide")
+        cardsContainer.classList.add("hide")
+
+
+    })
+}
 
 
 function createTableRows() {
@@ -129,8 +264,6 @@ function createTableRows() {
 
         }
 
-
-
         //this will create balance table data
         var balanceTableCell = document.createElement("td");
         balanceTableCell.innerText = tr.balance;
@@ -138,8 +271,8 @@ function createTableRows() {
 
         tableElement.appendChild(newRowElement);
 
-        console.log(transactions);
     })
+    clearInputs()
 }
 
 
